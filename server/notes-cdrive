@@ -1,0 +1,24 @@
+The cdrive as noted from eboardsetup.sh may not be immediately 
+usable as it it automounted by the system. This must be unmounted 
+and mounted as /cdrive
+
+
+Remote shell to the OSMC device 
+
+ssh osmc@192.168.1.90
+osmc@192.168.1.90's password: osmc
+osmc@osmc:~$
+osmc@osmc:~$ sudo su -
+root@osmc:/home/osmc# 
+
+root@osmc:/home/osmc# mount /cdrive
+Mount is denied because the NTFS volume is already exclusively opened.
+The volume may be already mounted, or another software may use it which
+could be identified for example by the help of the 'fuser' command.
+
+root@osmc:/home/osmc# mount | grep Seagate
+/dev/sda1 on /media/Seagate Backup Plus Drive type fuseblk (rw,nosuid,nodev,relatime,user_id=0,group_id=0,default_permissions,allow_other,blksize=4096,uhelper=udisks)
+
+root@osmc:/home/osmc# umount /media/Seagate\ Backup\ Plus\ Drive/
+root@osmc:/home/osmc# mount /cdrive
+
